@@ -1,37 +1,45 @@
 <%- include('includes/header.ejs') %>
 
+    <div class="jumbotron jumbotron-fluid bg-secondary text-light">
+        <div class="container text-center">
+            <h1 class="display-2">Moc Meetup</h1>
+            <p>Find free classrooms during your desired meeting time!</p>
+        </div>
+    </div>
     <div class="container">
-        <form>
-            <div class="row pt-5 justify-content-center">
-                <!-- Building select -->
-                <div class="col-md-3 col-5 pr-0">
-                    <select class="form-select form-control" aria-label="Select building to search by">
-                        <option selected>Select a building</option>
-                        <% for(let buildingName of buildings){ %>
-                            <option value="<%= buildingName %>"><%= buildingName %></option>
-                        <% } %>
-                    </select>
-                </div>
-                <!-- Time select -->
-                <div class="col-md-3 col-5 pl-0"><input type="time" class="form-control" name="time" value="14:00" /></div>
+        <!-- Building select -->
+        <div class="row pt-5 justify-content-center">
+            <div class="col-7">
+                <select id="buildingSelect" class="form-select form-control" aria-label="Select building to search by">
+                    <option selected>Select a building</option>
+                    <% for(let buildingName of buildings){ %>
+                        <option value="<%= buildingName %>"><%= buildingName %></option>
+                    <% } %>
+                </select>
             </div>
-            <div class="row pb-5 justify-content-center">
-                <div class="col-md-6 col-10"><button class="btn-secondary form-control" type="button"><i class="fa fa-search"></i></button></div>
-            </div>
-        </form>
+        </div>
+        <!-- Time select -->
+        <div class="row justify-content-center">
+            <div class="col-3"><input type="time" class="form-control" id="startTime" value="14:00" /></div>
+            <div class="col-1 text-center align-self-center">to</div>
+            <div class="col-3"><input type="time" class="form-control" id="endTime" value="15:00" /></div>
+        </div>
+        <div class="row pb-5 justify-content-center">
+            <div class="col-7"><button id="classSearch" class="btn-secondary form-control" type="button"><i class="fa fa-search"></i></button></div>
+        </div>
 
         <!--- Print Datatable --->
         <div class="row justify-content-around">
-            <div class="col-md-8 col-10 border border-3 border-info rounded">
+            <div class="col-10 border border-3 border-warning rounded classBox">
                 <table id="searchTable" class="table grid">
                     <thead class="text-center">
                     <tr>
                         <th id="searchTable_rooms">Available Rooms</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="roomContainer">
                         <tr>
-                            <td aria-label="Name"><i>Enter a search</i></td>
+                            <td><i>Enter a search</i></td>
                         </tr>
                     </tbody>
                 </table>
@@ -40,3 +48,25 @@
     </div>
 
 <%- include('includes/footer.ejs') %>
+
+<script>
+    $("#classSearch").on("click", function() {
+        $.ajax({
+            url:"/chart/freeClassrooms",
+            type:"GET",
+            dataType: "json",
+            data: {
+                startTime: $('#startTime').val(),
+                endTime: $('#endTime').val(),
+                building: $('#buildingSelect').val()
+            },
+            contentType: "application/json",
+            success: function(result) {
+                $("#roomContainer").html("");
+                result.forEach(room => {
+                    $("#roomContainer").append(`<tr><td>${room}</td></tr>`);
+                });
+            }
+        });
+    });
+</script>

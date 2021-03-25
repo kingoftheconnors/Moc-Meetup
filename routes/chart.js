@@ -24,6 +24,13 @@ router.get('/classroom', function(req, res, next) {
   })
 });
 
+// GET classroom search
+router.get('/freeClassrooms', function(req, res, next) {
+  dataTier.getRoomsInBuildingFreeDuringTime(req.query.building, req.query.startTime, req.query.endTime, function(rooms) {
+    res.send(rooms);
+  })
+});
+
 // GET calendar
 router.get('/:id', function(req, res, next) {
   // If an extension is noted, call it by id
