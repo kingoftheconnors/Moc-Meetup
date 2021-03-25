@@ -2,10 +2,11 @@
 // Blue = #2176AE and #57B8FF (buttons + page content)
 // Yellow = #B66D0D and #FBB136 (magnifying glass + navbar)
 $theme-colors: (
-  "primary": #57B8FF,
-  "info": #2176AE,
+  "primary": #066db1,
+  "info": #57B8FF,
   "secondary": #B66D0D,
-  "warning": #FBB136
+  "warning": #FBB136,
+  
 );
 
 @import "../../node_modules/bootstrap/scss/bootstrap";
@@ -23,8 +24,10 @@ a {
   display:none
 }
 
-input.classes {
-  border: none;
-  background-color: transparent;
-  color: inherit;
+.classBox {
+  min-height:56px;
+  max-height:250px;
+  overflow:scroll;
+  overflow-y:scroll;
+  overflow-x:hidden;
 }

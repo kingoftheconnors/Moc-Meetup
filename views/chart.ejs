@@ -1,19 +1,19 @@
 <%- include('includes/header.ejs') %>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-6 align-self-center">
-                <h1 class="py-5 float-right display-4">Moc Meetup</h1>
-            </div>
-            <div class="col-6"><img src="/images/logo.png" /></div>
+    <div class="jumbotron jumbotron-fluid bg-primary text-light">
+        <div class="container text-center">
+            <h1 class="display-2">Moc Meetup</h1>
+            <p>Find the class-free times for your target audience!</p>
         </div>
+    </div>
+    <div class="container">
         <div class="row justify-content-center">
             <div class="col-12">
                 <div id="container" style="min-width: 500px; height: 500px; margin: 0 auto"></div>
             </div>
         </div>
         <% if(!isAlreadySaved) { %>
-            <div class="row justify-content-center">
+            <div class="row justify-content-center pb-4">
                 <div class="col-6" id="submitRow"><button class="form-control" id="saveCalendarBtn">Save as Club Scheduler Page</button></div>
             </div>
             <form class="invisble" id="nameform" action="/saveChart" method="POST">
