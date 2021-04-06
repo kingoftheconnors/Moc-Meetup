@@ -1,0 +1,86 @@
+<%- include('includes/header.ejs') %>
+
+    <div class="jumbotron jumbotron-fluid bg-primary text-light">
+        <div class="container text-center">
+            <h1 class="display-2">Moc Meetup</h1>
+            <p>Create a preset!</p>
+        </div>
+    </div>
+    <div class="container">
+        <% if ( error.length > 0 ) { %>
+            <p class="py-4 text-center text-danger"><%= error %> </p>
+        <% } %>
+        <% if ( message.length > 0 ) { %>
+            <p class="py-4 text-center text-success"><%= message %> </p>
+        <% } %>
+        <!-- On submit use an ajax call to get all classes from the preset chosen, which the user can then dynamically add to-->
+        <form onsubmit="return addClass();">
+            <div class="row py-3 justify-content-center">
+                <div class="col-7 col-md-8 col-lg-9">
+                    <input id="classBrowser" list="classroomList" class="form-control" placeholder="Enter a class name"/>
+                    <datalist id="classroomList">
+                        <% for(let className of classes){ %>
+                            <option value="<%= className %>"><%= className %></option>
+                        <% } %>
+                    </datalist>
+                </div>
+                <div class="col-3 col-md-2 col-lg-1">
+                    <button class="btn-info form-control" type="submit">Add</button>
+                </div>
+            </div>
+        </form>
+        <form action="/preset/insert" method="POST">
+            <!-- Majors & Years (dynamically add readonly input fields copying values using add button)-->
+            <div class="row justify-content-around">
+                <div class="col-10">
+                    <div id="classBox" class="classBox border border-dark rounded bg-info text-black p-2 mb-0">
+                        <div id="classBoxPlaceholder" class="row">
+                            <div class="col-9 col-md-10 align-self-center pl-4 py-2"><i class="text-primary">Add classes to build a schedule preset</i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Submit!-->
+            <div class="row justify-content-center py-4 border-bottom border-primary">
+                <input class="form-control col-md-2 col-3" name="presetName" placeholder="Enter name" required/>
+                <input class="btn-primary form-control col-md-2 col-3" type="submit" value="Save" />
+            </div>
+        </form>
+
+        <div class="row justify-content-center pt-4">
+            <div class="col-md-8 col-12 px-0">
+                <div class="border border-dark rounded bg-info text-black p-2 mb-0 text-center">
+                    <b>View existing presets</b>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center pb-4">
+            <div class="col-md-4 col-6 px-0">
+                <select id="viewPreset" class="form-control" size="10">
+                    <% for(let presetName of Object.keys(presets)){ %>
+                        <option value="<%= presetName %>" data-classlist="<%= presets[presetName].join(',') %>"><%= presetName %></option>
+                    <% } %>
+                </select>
+            </div>
+            <div class="col-md-4 col-6 px-0">
+                <select id="viewPresetClasses" class="form-control" size="10">
+                    <option>Select a preset on the left side</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+<%- include('includes/footer.ejs') %>
+
+<script type="text/javascript" src="/javascripts/classSearch.js"></script>
+<script>
+    $('#viewPreset').on('change', function(e){
+        var classList = $("option:selected", this).data("classlist").split(',');
+        
+        $('#viewPresetClasses').text('')
+        for (var i = 0; i < classList.length; i++) {
+            $('#viewPresetClasses').append('<option>' + classList[i] + '</option>');
+        }
+    })
+</script>
