@@ -7,6 +7,12 @@
         </div>
     </div>
     <div class="container">
+        <% if ( error.length > 0 ) { %>
+            <p class="py-4 text-center text-danger"><%= error %> </p>
+        <% } %>
+        <% if ( message.length > 0 ) { %>
+            <p class="py-4 text-center text-success"><%= message %> </p>
+        <% } %>
         <p class="text-center">
             Thank you for using Moc Meetup! If there is anything you would like to propose
             or critique to make this tool better, please let us know!
@@ -23,7 +29,7 @@
             
             <!-- Submit!-->
             <div class="row justify-content-around py-4 border-bottom border-primary">
-                <input class="btn-primary form-control col-md-2 col-3" type="submit" value="Search" />
+                <input class="btn-primary form-control col-md-2 col-3" type="submit" value="Send" />
             </div>
         </form>
     </div>

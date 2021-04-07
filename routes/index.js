@@ -35,7 +35,8 @@ router.get('/', function(req, res, next) {
 
 /* GET home page. */
 router.get('/feedback', function(req, res, next) {
-  res.render('feedback');
+  res.render('feedback', { error: req.flash('error'),
+                           message: req.flash('message')});
 });
 
 /* POST home page. */
@@ -61,11 +62,15 @@ router.post('/feedback', function(req, res, next) {
         transporter
             .sendMail(message)
             .catch((error) => {
-                console.error(error)
+                req.flash('error', 'Failed to send email. ' + error)
             });
+    } else {
+      req.flash('error', 'Cannot reach email server. Please try again later.')
     }
   }
-  res.render('feedback-thankyou');
+  req.flash('message', 'Your feedback has been sent. Thank you!')
+
+  res.redirect('/feedback');
 });
 
 module.exports = router;
