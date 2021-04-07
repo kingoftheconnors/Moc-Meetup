@@ -8,41 +8,44 @@
     </div>
     <div class="container">
         <!-- On submit use an ajax call to get all classes from the preset chosen, which the user can then dynamically add to-->
-        <form onsubmit="return addClass();">
-            <div class="row py-3 justify-content-center">
-                <div class="col-7 col-md-8 col-lg-9">
-                    <input id="classBrowser" list="classroomList" class="form-control" placeholder="Enter a class name"/>
-                    <datalist id="classroomList">
-                        <% for(let className of classes){ %>
-                            <option value="<%= className %>"><%= className %></option>
-                        <% } %>
-                    </datalist>
-                </div>
-                <div class="col-3 col-md-2 col-lg-1">
-                    <button class="btn-info form-control" type="submit">Add</button>
-                </div>
+        <div class="row py-3 justify-content-center">
+            <div class="col-7 col-md-8 col-lg-9">
+                <input id="classBrowser" list="classroomList" class="form-control" placeholder="Enter a class name"/>
+                <datalist id="classroomList">
+                    <% for(let className of classes){ %>
+                        <option value="<%= className %>"><%= className %></option>
+                    <% } %>
+                </datalist>
             </div>
-        </form>
+            <div class="col-3 col-md-2 col-lg-1">
+                <button class="btn-info form-control" type="button" onclick="addClass();">Add</button>
+            </div>
+        </div>
         <form action="/chart" method="POST">
             <!-- Majors & Years (dynamically add readonly input fields copying values using add button)-->
             <div class="row justify-content-around">
                 <div class="col-10">
                     <div id="classBox" class="classBox border border-dark rounded bg-info text-black p-2 mb-0">
+                        <div id="classBoxPlaceholder" class="row">
+                            <div class="col-9 col-md-10 align-self-center pl-4 py-2"><i class="text-primary">Add classes to generate a theoretical schedule</i></div>
+                        </div>
                     </div>
                 </div>
             </div>
             <!-- Presets box -->
-            <!-- TODO: Populate presets -->
-            <!-- <div class="row justify-content-around">
-                <div class="col-10">
-                    <select class="form-control" id="inputState" name="major1">
+            <div class="row justify-content-center">
+                <div class="col-7 col-md-8 col-lg-9 pr-0">
+                    <select class="form-control" id="viewPreset">
                         <option selected="">Use a Preset of classes...</option>
-                        <option>Computer Science Freshman</option>
-                        <option>Computer Science Sophomores</option>
-                        <option>Business Freshman</option>
+                        <% for(let presetName of Object.keys(presets)){ %>
+                            <option value="<%= presetName %>" data-classlist="<%= presets[presetName].join(',') %>"><%= presetName %></option>
+                        <% } %>
                     </select>
                 </div>
-            </div> -->
+                <div class="col-3 col-md-2 col-lg-1 pl-0">
+                    <button class="btn-info form-control" type="button" onclick="addPreset();">Add</button>
+                </div>
+            </div>
             
             <!-- Submit!-->
             <div class="row justify-content-around py-4 border-bottom border-primary">
@@ -53,27 +56,4 @@
 
 <%- include('includes/footer.ejs') %>
 
-<script>
-    $("#classroomList").on("input", function() {
-        console.log("Selected");
-    });
-
-    function addClass() {
-        var className = $("#classBrowser").val();
-        if(className != '') {
-            var newElem = $(`
-                <div class="row">
-                    <input type="hidden" name="classes" value="${className}">
-                    <div class="col-9 col-md-10 align-self-center pl-4">${className}</div>
-                    <div class="col-3 col-md-2"><button class="btn-info form-control btn-class-delete" type="button"><i class="fa fa-times"></i></button></div>
-                </div>
-            `)
-            newElem.find('.btn-class-delete').on('click', function() {
-                $(this).closest('.row').remove();
-            })
-            $('#classBox').append(newElem);
-            $("#classBrowser").val("");
-        }
-        return false;
-    }
-</script>
+<script type="text/javascript" src="/javascripts/classSearch.js"></script>
