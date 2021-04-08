@@ -59,7 +59,7 @@
             <div class="col-md-4 col-6 px-0">
                 <select id="viewPreset" class="form-control" size="10">
                     <% for(let presetName of Object.keys(presets)){ %>
-                        <option value="<%= presetName %>" data-classlist="<%= presets[presetName].join(',') %>"><%= presetName %></option>
+                        <option value="<%= presetName %>" data-classlist="<%= presets[presetName].join('|') %>"><%= presetName %></option>
                     <% } %>
                 </select>
             </div>
@@ -76,7 +76,7 @@
 <script type="text/javascript" src="/javascripts/classSearch.js"></script>
 <script>
     $('#viewPreset').on('change', function(e){
-        var classList = $("option:selected", this).data("classlist").split(',');
+        var classList = $("option:selected", this).data("classlist").split('|');
         
         $('#viewPresetClasses').text('')
         for (var i = 0; i < classList.length; i++) {

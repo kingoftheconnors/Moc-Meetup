@@ -18,9 +18,16 @@ router.get('/', function(req, res, next) {
 
 router.post('/insert', function(req, res, next) {
   // Get data from request
-  var inputClasses = req.body.classes
-  var calendarName = req.body.presetName || [];
-
+  var inputClasses = req.body.classes || []
+  var calendarName = req.body.presetName;
+  // Convert single-input presets from String to Array
+  if (typeof inputClasses !== "array" && typeof inputClasses !== "object") {
+    inputClasses = [inputClasses]
+  }
+  // Remove duplicates
+  inputClasses = inputClasses.sort().filter(function(item, pos, ary) {
+      return !pos || item.toLowerCase() != ary[pos - 1].toLowerCase();
+  });
   // Save data in database
   dataTier.addPreset(calendarName, inputClasses, function(errorString) {
     if(errorString)

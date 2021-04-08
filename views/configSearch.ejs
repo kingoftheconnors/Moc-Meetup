@@ -38,7 +38,7 @@
                     <select class="form-control" id="viewPreset">
                         <option selected="">Use a Preset of classes...</option>
                         <% for(let presetName of Object.keys(presets)){ %>
-                            <option value="<%= presetName %>" data-classlist="<%= presets[presetName].join(',') %>"><%= presetName %></option>
+                            <option value="<%= presetName %>" data-classlist="<%= presets[presetName].join('|') %>"><%= presetName %></option>
                         <% } %>
                     </select>
                 </div>

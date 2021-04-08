@@ -61,13 +61,14 @@ router.get('/:id', function(req, res, next) {
 
 // POST search params
 router.post('/', function(req, res, next) {
-  var inputClasses = req.body.classes
-  if(!req.body.classes) {
-    inputClasses = []
-  }
+  var inputClasses = req.body.classes || []
   if (typeof inputClasses !== "array" && typeof inputClasses !== "object") {
     inputClasses = [inputClasses]
   }
+  // Remove duplicates
+  inputClasses = inputClasses.sort().filter(function(item, pos, ary) {
+      return !pos || item.toLowerCase() != ary[pos - 1].toLowerCase();
+  });
   // Go through req to find REAL input, find out WHICH files need to be opened
   classProcessingArray = inputClasses.map(name => dataTier.getClassData(name.trim()))
   Promise.all(classProcessingArray)
