@@ -69,7 +69,7 @@ router.post('/', function(req, res, next) {
     inputClasses = [inputClasses]
   }
   // Go through req to find REAL input, find out WHICH files need to be opened
-  classProcessingArray = inputClasses.map(name => dataTier.getClassData(name.replace(/^\s*/g, '').replace(/\s*$/g, '')))
+  classProcessingArray = inputClasses.map(name => dataTier.getClassData(name.trim()))
   Promise.all(classProcessingArray)
     .then((values) => {
       // Numbers 1-27 represent 8:00am-9:30pm on Monday by half-hour. 28-54 represent 8:00am-9:30pm on Tuesday.
