@@ -17,7 +17,7 @@
         <form onsubmit="return addClass();">
             <div class="row py-3 justify-content-center">
                 <div class="col-7 col-md-8 col-lg-9">
-                    <input id="classBrowser" list="classroomList" class="form-control" placeholder="Enter a class name (supports * as wildcard)"/>
+                    <input id="classBrowser" list="classroomList" class="form-control" placeholder="Enter a class name (supports * as wildcard)" maxlength="100" />
                     <datalist id="classroomList">
                         <% for(let className of classes){ %>
                             <option value="<%= className %>"><%= className %></option>
