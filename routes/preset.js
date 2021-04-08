@@ -24,6 +24,12 @@ router.post('/insert', function(req, res, next) {
   if (typeof inputClasses !== "array" && typeof inputClasses !== "object") {
     inputClasses = [inputClasses]
   }
+  // Return error if no classes passed in
+  if(inputClasses.length == 0) {
+    req.flash('error', 'Preset must contain classes!');
+    res.redirect('/preset');
+    return;
+  }
   // Remove duplicates
   inputClasses = inputClasses.sort().filter(function(item, pos, ary) {
       return !pos || item.toLowerCase() != ary[pos - 1].toLowerCase();
@@ -31,9 +37,9 @@ router.post('/insert', function(req, res, next) {
   // Save data in database
   dataTier.addPreset(calendarName, inputClasses, function(errorString) {
     if(errorString)
-      req.flash('error', errorString)
+      req.flash('error', errorString);
     else
-      req.flash('message', 'New preset was successfully created!')
+      req.flash('message', 'New preset was successfully created!');
     res.redirect('/preset');
   });
 });

@@ -8,10 +8,10 @@
     </div>
     <div class="container">
         <% if ( error.length > 0 ) { %>
-            <p class="py-4 text-center text-danger"><%= error %> </p>
+            <p class="py-3 text-center text-danger"><%= error %> </p>
         <% } %>
         <% if ( message.length > 0 ) { %>
-            <p class="py-4 text-center text-success"><%= message %> </p>
+            <p class="py-3 text-center text-success"><%= message %> </p>
         <% } %>
         <!-- On submit use an ajax call to get all classes from the preset chosen, which the user can then dynamically add to-->
         <form onsubmit="return addClass();">

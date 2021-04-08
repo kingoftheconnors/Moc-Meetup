@@ -28,7 +28,10 @@ const dataTier = require("../lib/dataTier");
 router.get('/', function(req, res, next) {
   dataTier.getClassNames(function(classesArray) {
     dataTier.getPresets(function(presetsDict) {
-      res.render('configSearch', { classes: classesArray, presets: presetsDict });
+      res.render('configSearch', { classes: classesArray
+                                 , presets: presetsDict
+                                 , error: req.flash('error')
+                                 , message: req.flash('message')});
     })
   })
 });

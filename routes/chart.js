@@ -65,6 +65,12 @@ router.post('/', function(req, res, next) {
   if (typeof inputClasses !== "array" && typeof inputClasses !== "object") {
     inputClasses = [inputClasses]
   }
+  // Return error if no classes passed in
+  if(inputClasses.length == 0) {
+    req.flash('error', 'Search must contain classes!');
+    res.redirect('/');
+    return;
+  }
   // Remove duplicates
   inputClasses = inputClasses.sort().filter(function(item, pos, ary) {
       return !pos || item.toLowerCase() != ary[pos - 1].toLowerCase();
