@@ -18,6 +18,19 @@
                 </select>
             </div>
         </div>
+        <!-- Day select -->
+        <div class="row justify-content-center">
+            <div class="col-7">
+                <select id="daySelect" class="form-select form-control" aria-label="Select day of the week to search on">
+                    <option selected>Select a day of the week</option>
+                    <option value="M">Monday</option>
+                    <option value="T">Tuesday</option>
+                    <option value="W">Wednesday</option>
+                    <option value="H">Thursday</option>
+                    <option value="F">Friday</option>
+                </select>
+            </div>
+        </div>
         <!-- Time select -->
         <div class="row justify-content-center">
             <div class="col-3"><input type="time" class="form-control" id="startTime" value="14:00" /></div>
@@ -58,13 +71,14 @@
             data: {
                 startTime: $('#startTime').val(),
                 endTime: $('#endTime').val(),
+                weekDay: $('#daySelect').val(),
                 building: $('#buildingSelect').val()
             },
             contentType: "application/json",
             success: function(result) {
                 $("#roomContainer").html("");
                 result.forEach(room => {
-                    $("#roomContainer").append(`<tr><td>${room}</td></tr>`);
+                    $("#roomContainer").append(`<tr><td>${$('#buildingSelect').val()} ${room}</td></tr>`);
                 });
             }
         });

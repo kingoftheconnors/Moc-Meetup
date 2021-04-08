@@ -26,7 +26,7 @@ router.get('/classroom', function(req, res, next) {
 
 // GET classroom search
 router.get('/freeClassrooms', function(req, res, next) {
-  dataTier.getRoomsInBuildingFreeDuringTime(req.query.building, req.query.startTime, req.query.endTime, function(rooms) {
+  dataTier.getRoomsInBuildingFreeDuringTime(req.query.building, req.query.startTime, req.query.endTime, req.query.weekDay, function(rooms) {
     res.send(rooms);
   })
 });
