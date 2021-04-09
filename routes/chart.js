@@ -61,6 +61,7 @@ router.get('/:id', function(req, res, next) {
 
 // POST search params
 router.post('/', function(req, res, next) {
+  console.log("Creating chart")
   var inputClasses = req.body.classes || []
   if (typeof inputClasses !== "array" && typeof inputClasses !== "object") {
     inputClasses = [inputClasses]
