@@ -39,15 +39,17 @@
 
         function formatData(data) {
             var chartArray = []
-            var classData = Object.values(data)
-            classData = [].concat.apply([], classData);
             for (var x = 0; x < <%= chartX %>; x++) {
                 for (var y = 0; y < <%= chartY %>; y++) {
                     var index = x * <%= chartY %> +y;
-                    chartArray[index] = [x, y, classData.filter(v => v === index).length];
+                    chartArray[index] = {
+                        x: x,
+                        y: y,
+                        value: Object.keys(data).filter(v => data[v].includes(index)).length,
+                        classList: Object.keys(data).filter(v => data[v].includes(index)).join(', ')
+                    };
                 }
             }
-            console.log(chartArray)
             return chartArray;
         }
 
@@ -65,7 +67,7 @@
                     plotBorderWidth: 1
                 },
                 title: {
-                    text: "Club Schedule"
+                    text: "Classes by Week"
                 },
 
                 xAxis: {
@@ -120,8 +122,9 @@
 
                 tooltip: {
                     formatter: function() {
-                        return '<b>' + getPointCategoryName(this.point, 'x') + '</b> has <br><b>' +
-                            this.point.value + '</b> classes from <br><b>' + getPointCategoryName(this.point, 'y') + '</b>';
+                        return '<b>' + getPointCategoryName(this.point, 'x') + '</b> has <b>'
+                            + this.point.value + '</b> classes from <b>' + getPointCategoryName(this.point, 'y') + '</b><br>'
+                            + this.point.classList;
                     }
                 },
 
