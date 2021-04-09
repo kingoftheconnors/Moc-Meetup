@@ -44,6 +44,13 @@
             <!-- Submit!-->
             <div class="row justify-content-center py-4 border-bottom border-primary">
                 <input class="form-control col-md-2 col-3" name="presetName" placeholder="Enter name" required/>
+                <select class="form-control col-md-2 col-3" name="expirationPeriod">
+                    <option value="1" selected>Lasts for...</option>
+                    <option value="1">One semester</option>
+                    <option value="2">One year</option>
+                    <option value="4">Two year</option>
+                    <option value="8">Four years</option>
+                </select>
                 <input class="btn-primary form-control col-md-2 col-3" type="submit" value="Save" />
             </div>
         </form>

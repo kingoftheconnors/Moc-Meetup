@@ -1,0 +1,8 @@
+#! /app/.heroku/node/bin/node
+async function preset_expiration() {
+    const dataTier = require("../lib/dataTier");
+    await dataTier.deleteExpiredPresets()
+    process.exit();
+}
+
+preset_expiration();

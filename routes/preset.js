@@ -20,6 +20,15 @@ router.post('/insert', function(req, res, next) {
   // Get data from request
   var inputClasses = req.body.classes || []
   var calendarName = req.body.presetName;
+  // Create expiration date
+  var expirationSemesters = parseInt(req.body.expirationPeriod);
+  if(expirationSemesters == NaN) {
+    expirationSemesters = 1
+  }
+  var expirationDate = new Date();
+  expirationDate.setDate(expirationDate.getDate() + expirationSemesters*365/2)
+  // Convert date to database-friendly string
+  expirationDate = expirationDate.toISOString().replace('T',' ').replace('Z','');
   // Convert single-input presets from String to Array
   if (typeof inputClasses !== "array" && typeof inputClasses !== "object") {
     inputClasses = [inputClasses]
@@ -35,7 +44,7 @@ router.post('/insert', function(req, res, next) {
       return !pos || item.toLowerCase() != ary[pos - 1].toLowerCase();
   });
   // Save data in database
-  dataTier.addPreset(calendarName, inputClasses, function(errorString) {
+  dataTier.addPreset(calendarName, inputClasses, expirationDate, function(errorString) {
     if(errorString)
       req.flash('error', errorString);
     else
