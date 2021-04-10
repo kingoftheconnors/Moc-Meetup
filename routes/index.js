@@ -37,6 +37,11 @@ router.get('/', function(req, res, next) {
 });
 
 /* GET home page. */
+router.get('/about', function(req, res, next) {
+  res.render('about');
+});
+
+/* GET home page. */
 router.get('/feedback', function(req, res, next) {
   res.render('feedback', { error: req.flash('error'),
                            message: req.flash('message')});

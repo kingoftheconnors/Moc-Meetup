@@ -1,0 +1,77 @@
+<%- include('includes/header.ejs') %>
+
+    <div class="jumbotron jumbotron-fluid bg-primary text-light">
+        <div class="container text-center">
+            <h1 class="display-2">Moc Meetup</h1>
+            <p>About the Project!</p>
+        </div>
+    </div>
+    <div class="container">
+        <!-- On submit use an ajax call to get all classes from the preset chosen, which the user can then dynamically add to-->
+        <div class="row py-3 justify-content-center">
+            <div class="col-6">
+                <p>
+                    Moc-Meetup is the passion project of a UTC Alumni, Connor McPherson, club president
+                    of CompUTC. As a programmer with a calling for tinkering and small conveniences,
+                    he dreamed of creating a search engine for tracking calendar times in an accessible,
+                    visual heatmap. His first attempts into this dream site ended in pathetic failure,
+                    no matter how many methods he tried.
+                </p>
+                <p>
+                    In 2019, the Moc Meetup team grew to two people, with web programmer and visionary
+                    Kishan Patel, who proposed web-scraping the UTC schedule into a personal database
+                    to give full control of the class format. Together, Kishan and Connor crafted the
+                    prototype web scraper. In 2020, Connor invited another student, Audrey Tan, onto
+                    the team to consult on the web app's look and body. Finally, in April of 2021,
+                    a full year after Connor graduated, Moc Meetup was released to the UTC student body.
+                </p>
+            </div>
+            <figure class="col-4">
+              <img src="/images/logo.png" alt="Magnifying glass over clock" class="w-100">
+                <figcaption>
+                  This was our first logo for Moc Meetup early in development. When we nailed
+                  down our color scheme, we realized having a logo was a crutch. Removing it made the
+                  front page easier to look at and more intuitive to users.
+                </figcaption>
+            </figure>
+        </div>
+        <div class="row py-3 justify-content-center">
+            <div class="col-6">
+                <p>
+                    <b>Why put so much work into this?</b>
+                </p>
+                <p>
+                    The goal of Moc Meetup is to solve the problems we faced while
+                    scheduling meetings and appointments with other students. Any event organizer
+                    knows that finding a time and a room is hours of your life wasted that could be
+                    better spent planning and leading. This web app is a gift for tutors, event organizers,
+                    club leaders, and study group planners at UTC, and I hope this gift helps you in
+                    whatever you're trying to do!
+                </p>
+                <p>
+                    And if you're feeling extra nice, pass the gift on to someone you know! Share the
+                    love!
+                </p>
+            </div>
+            <div class="col-4"></div>
+        </div>
+        <div class="row py-3 justify-content-center">
+            <div class="col-6">
+                <p>
+                    <b>Is the project continuing?</b>
+                </p>
+                <p>
+                    Nope! But while WE don't have any further plans, that doesn't mean you can't!
+                    You can find the source-code on
+                    <a href="https://github.com/kingoftheconnors/Class-Scheduler/tree/Product">github</a>,
+                    and the project is licensed under MIT (free to make your own however you want)!
+                    You can also contact me through the Feedback page on the top!
+                </p>
+            </div>
+            <div class="col-4"></div>
+        </div>
+    </div>
+
+<%- include('includes/footer.ejs') %>
+
+<script type="text/javascript" src="/javascripts/classSearch.js"></script>
