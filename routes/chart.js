@@ -76,13 +76,19 @@ router.post('/', function(req, res, next) {
   inputClasses = inputClasses.sort().filter(function(item, pos, ary) {
       return !pos || item.toLowerCase() != ary[pos - 1].toLowerCase();
   });
-  // Go through req to find REAL input, find out WHICH files need to be opened
+  
   classProcessingArray = inputClasses.map(name => dataTier.getClassData(name.trim()))
   Promise.all(classProcessingArray)
     .then((values) => {
-      // Numbers 1-27 represent 8:00am-9:30pm on Monday by half-hour. 28-54 represent 8:00am-9:30pm on Tuesday.
-      var createdCalendar = buildCalendar(inputClasses, values); // Created calendar format: { CPSC1100: [0, 1, 2, 8, 9, 12, 13, 41, 42], CPSC1110: [22, 76], ... }
       
+      var classesDictionary = {}
+      values.forEach(function(classTimesDict) {
+        Object.assign(classesDictionary, classTimesDict)
+      })
+
+      // Numbers 1-27 represent 8:00am-9:30pm on Monday by half-hour. 28-54 represent 8:00am-9:30pm on Tuesday.
+      var createdCalendar = buildCalendar(classesDictionary); // Created calendar format: { CPSC1100: [0, 1, 2, 8, 9, 12, 13, 41, 42], CPSC1110: [22, 76], ... }
+      console.log(createdCalendar)
       res.render('chart',
         { name: "Class Layout by Week",
           barArray: JSON.stringify(createdCalendar),

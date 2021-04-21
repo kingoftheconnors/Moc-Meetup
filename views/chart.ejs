@@ -37,22 +37,6 @@
             return axis.categories[point[isY ? 'y' : 'x']];
         }
 
-        function formatData(data) {
-            var chartArray = []
-            for (var x = 0; x < <%= chartX %>; x++) {
-                for (var y = 0; y < <%= chartY %>; y++) {
-                    var index = x * <%= chartY %> +y;
-                    chartArray[index] = {
-                        x: x,
-                        y: y,
-                        value: Object.keys(data).filter(v => data[v].includes(index)).length,
-                        classList: Object.keys(data).filter(v => data[v].includes(index)).join(', ')
-                    };
-                }
-            }
-            return chartArray;
-        }
-
         window.onload = function() {
             $('#calendarData').val('<%- barArray %>')
 
@@ -129,7 +113,7 @@
                 },
 
                 series: [{
-                    data: formatData(JSON.parse('<%- barArray %>')),
+                    data: JSON.parse('<%- barArray %>'),
                     borderWidth: 1,
                     name: ""
                 }],
