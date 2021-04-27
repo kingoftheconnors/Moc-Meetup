@@ -11,6 +11,7 @@ var chartRouter = require('./routes/chart');
 var saveRouter = require('./routes/save');
 var scrapeRouter = require('./routes/scraper');
 var presetRouter = require('./routes/preset');
+var wdcRouter = require('./routes/wdc');
 
 var app = express();
 
@@ -41,6 +42,7 @@ app.use('/scrape', scrapeRouter);
 app.use('/chart', chartRouter);
 app.use('/saveChart', saveRouter);
 app.use('/preset', presetRouter);
+app.use('/tableauSource', wdcRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
