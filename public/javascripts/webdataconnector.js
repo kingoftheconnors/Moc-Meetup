@@ -10,6 +10,24 @@
         }, {
             id: "crn",
             dataType: tableau.dataTypeEnum.string
+        }, {
+            id: "subject",
+            dataType: tableau.dataTypeEnum.string
+        }, {
+            id: "level",
+            dataType: tableau.dataTypeEnum.int
+        }, {
+            id: "semester",
+            dataType: tableau.dataTypeEnum.string
+        }, {
+            id: "days",
+            dataType: tableau.dataTypeEnum.string
+        }, {
+            id: "startTime", // A time represented in seconds
+            dataType: tableau.dataTypeEnum.int
+        }, {
+            id: "endTime", // A time represented in seconds
+            dataType: tableau.dataTypeEnum.int
         }];
 
         var tableSchema = {
@@ -30,7 +48,13 @@
             for (var i = 0, len = resp.length; i < len; i++) {
                 tableData.push({
                     "name": resp[i].name,
-                    "crn": resp[i].crn
+                    "crn": resp[i].crn,
+                    "subject": resp[i].subject,
+                    "level": resp[i].level,
+                    "semester": resp[i].semester,
+                    "days": resp[i].days,
+                    "startTime": resp[i].startTime,
+                    "endTime": resp[i].endTime
                 });
             }
 
