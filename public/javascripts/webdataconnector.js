@@ -15,12 +15,21 @@
             dataType: tableau.dataTypeEnum.string
         }, {
             id: "level",
-            dataType: tableau.dataTypeEnum.int
-        }, {
-            id: "semester",
             dataType: tableau.dataTypeEnum.string
         }, {
             id: "days",
+            dataType: tableau.dataTypeEnum.string
+        }, {
+            id: "building",
+            dataType: tableau.dataTypeEnum.string
+        }, {
+            id: "room",
+            dataType: tableau.dataTypeEnum.string
+        }, {
+            id: "title",
+            dataType: tableau.dataTypeEnum.string
+        }, {
+            id: "term",
             dataType: tableau.dataTypeEnum.string
         }, {
             id: "startTime", // A time represented in seconds
@@ -51,8 +60,11 @@
                     "crn": resp[i].crn,
                     "subject": resp[i].subject,
                     "level": resp[i].level,
-                    "semester": resp[i].semester,
                     "days": resp[i].days,
+                    "building": resp[i].building,
+                    "room": resp[i].room,
+                    "title": resp[i].title,
+                    "term": resp[i].term,
                     "startTime": resp[i].startTime,
                     "endTime": resp[i].endTime
                 });
