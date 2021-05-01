@@ -32,10 +32,7 @@
             id: "term",
             dataType: tableau.dataTypeEnum.string
         }, {
-            id: "startTime", // A time represented in seconds
-            dataType: tableau.dataTypeEnum.int
-        }, {
-            id: "endTime", // A time represented in seconds
+            id: "time", // A time represented in seconds
             dataType: tableau.dataTypeEnum.int
         }];
 
@@ -65,8 +62,7 @@
                     "room": resp[i].room,
                     "title": resp[i].title,
                     "term": resp[i].term,
-                    "startTime": resp[i].startTime,
-                    "endTime": resp[i].endTime
+                    "time": resp[i].time
                 });
             }
 
