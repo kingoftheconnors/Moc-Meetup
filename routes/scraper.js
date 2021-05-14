@@ -14,4 +14,12 @@ router.get('/', function(req,res) {
   scraper.scrapeUnusedClasses(utils.getTerm())
 });
 
+router.get('/push', function(req,res) {
+  res.send("Pushing class data to tableau data source");
+
+  // Clear class tables
+  dataTier.pushClassDataToSheet()
+});
+
+
 module.exports = router;
