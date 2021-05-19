@@ -17,19 +17,14 @@
         <% if ( message.length > 0 ) { %>
             <p class="py-3 text-center text-success"><%= message %> </p>
         <% } %>
-        <div id="tableauBox" class="row justify-content-center">
+        <div id="classesTableauBox" class="row justify-content-center">
             <div class="col-12">
-                <div id="tableauViz"></div>
-                <script src="https://public.tableau.com/javascripts/api/tableau-2.js"></script>
-                <script>
-                    var viz;
-                    function initViz() {
-                        var containerDiv = document.getElementById("tableauViz"),
-                        url = "https://public.tableau.com/views/UTCClassesHeatmap/UTCClasses";
-                        viz = new tableau.Viz(containerDiv, url, {width: "100%", height: "100vh", hideTabs: true, hideToolbar: true});
-                    }
-                    initViz();
-                </script>
+                <div id="classesViz"></div>
+            </div>
+        </div>
+        <div id="roomsTableauBox" class="row justify-content-center d-none">
+            <div class="col-12">
+                <div id="roomsViz"></div>
             </div>
         </div>
 
@@ -50,12 +45,31 @@
 
 <%- include('includes/footer.ejs') %>
 
+<script src="https://public.tableau.com/javascripts/api/tableau-2.js"></script>
 <script type="text/javascript" src="/javascripts/classSearch.js"></script>
 <script>
+    function initViz(containerDiv, url) {
+        return new tableau.Viz(containerDiv, url, {width: "100%", height: "100vh", hideTabs: true, hideToolbar: true});
+    }
+
+    var findTimeViz = initViz(document.getElementById("classesViz"), "https://public.tableau.com/views/UTCClassesHeatmap/UTCClasses");
+
     $('.btn-tableau-scroll').on('click', function() {
         window.scroll({
             top: 350,
             behavior: 'smooth'
         });
+    })
+
+    var classroomViz;
+    $('#findClassroomBtn').on('click', function() {
+        $('#classesTableauBox').addClass('d-none')
+        $('#roomsTableauBox').removeClass('d-none')
+        if(classroomViz == undefined)
+            classroomViz = initViz(document.getElementById("roomsViz"), "https://public.tableau.com/views/UTCClassesHeatmap/UTCRooms");
+    })
+    $('#findTimeBtn').on('click', function() {
+        $('#roomsTableauBox').addClass('d-none')
+        $('#classesTableauBox').removeClass('d-none')
     })
 </script>
