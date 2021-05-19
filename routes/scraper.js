@@ -8,8 +8,6 @@ const utils = require("../lib/utils");
 router.get('/', function(req,res) {
   res.send("Working on it");
 
-  // Clear class tables
-  dataTier.clearClassData()
   // Double-check for subjects that don't have any classes
   scraper.scrapeUnusedClasses(utils.getTerm())
 });
