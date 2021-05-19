@@ -3,7 +3,11 @@
     <div class="jumbotron jumbotron-fluid bg-primary text-light">
         <div class="container text-center">
             <h1 class="display-2">Moc Meetup</h1>
-            <p>Find the class-free times for your target audience!</p>
+            <p>Find the time and place to organize your UTC events!</p>
+            <div class="row justify-content-center">
+                <a id="findTimeBtn" class="btn-tableau-scroll btn btn-info col-md-3 col-4">Find a time</a>
+                <a id="findClassroomBtn" class="btn-tableau-scroll btn btn-info offset-1 col-md-3 col-4">Find a classroom</a>
+            </div>
         </div>
     </div>
     <div class="container">
@@ -13,7 +17,7 @@
         <% if ( message.length > 0 ) { %>
             <p class="py-3 text-center text-success"><%= message %> </p>
         <% } %>
-        <div class="row justify-content-center">
+        <div id="tableauBox" class="row justify-content-center">
             <div class="col-12">
                 <div id="tableauViz"></div>
                 <script src="https://public.tableau.com/javascripts/api/tableau-2.js"></script>
@@ -47,3 +51,11 @@
 <%- include('includes/footer.ejs') %>
 
 <script type="text/javascript" src="/javascripts/classSearch.js"></script>
+<script>
+    $('.btn-tableau-scroll').on('click', function() {
+        window.scroll({
+            top: 350,
+            behavior: 'smooth'
+        });
+    })
+</script>
