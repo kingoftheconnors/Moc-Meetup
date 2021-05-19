@@ -13,8 +13,8 @@
         <% if ( message.length > 0 ) { %>
             <p class="py-3 text-center text-success"><%= message %> </p>
         <% } %>
-        <div class="row">
-            <div class="col-8">
+        <div class="row justify-content-center">
+            <div class="col-12">
                 <div id="tableauViz"></div>
                 <script src="https://public.tableau.com/javascripts/api/tableau-2.js"></script>
                 <script>
@@ -22,34 +22,10 @@
                     function initViz() {
                         var containerDiv = document.getElementById("tableauViz"),
                         url = "https://public.tableau.com/views/UTCClassesHeatmap/UTCClasses";
-                        viz = new tableau.Viz(containerDiv, url, {width: "100%", height: "650px", hideTabs: true, hideToolbar: true});
+                        viz = new tableau.Viz(containerDiv, url, {width: "100%", height: "100vh", hideTabs: true, hideToolbar: true});
                     }
                     initViz();
                 </script>
-            </div>
-            <div class="col-4">
-                <!-- Presets box -->
-                <div class="row justify-content-center">
-                    <div class="col">
-                        <select class="form-control" id="viewPreset">
-                            <option selected="">Use a Preset of classes...</option>
-                            <% for(let presetName of Object.keys(presets)){ %>
-                                <option value="<%= presetName %>" data-classlist="<%= presets[presetName].join('|') %>"><%= presetName %></option>
-                            <% } %>
-                        </select>
-                    </div>
-                </div>
-                <!-- On submit use an ajax call to get all classes from the preset chosen, which the user can then dynamically add to-->
-                <div class="row py-3 justify-content-center">
-                    <div class="col">
-                        <input id="classBrowser" list="classroomList" class="form-control" placeholder="Enter a class name" maxlength="100" />
-                        <datalist id="classroomList">
-                            <% for(let className of classes){ %>
-                                <option value="<%= className %>"><%= className %></option>
-                            <% } %>
-                        </datalist>
-                    </div>
-                </div>
             </div>
         </div>
 
