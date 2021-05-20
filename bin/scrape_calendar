@@ -7,22 +7,9 @@ async function scrape_calendar() {
     var term = utils.getTerm()
 
     // If a subject has a term earlier than current term, scrape
-    var scraped = false
-    var dirtySubject = await dataTier.getSubjectWithPreviousTerm(term)
-    while(dirtySubject != null && dirtySubject != undefined) {
-        console.log(term)
-        console.log(dirtySubject)
-        // Remove pre-existing classes in this subject in this term (so we won't have duplicates)
-        await dataTier.clearClassDataBySubjectInTerm(dirtySubject, term)
-        // Scrape data by subject and term
-        await scraper.scrapeData(dirtySubject, term)
-        // Delete date from that subject with old term
-        await dataTier.clearClassDataBySubjectAndTerm(dirtySubject, term)
-        var dirtySubject = await dataTier.getSubjectWithPreviousTerm(term)
-        scraped = true
-    }
+    await dataTier.deleteOldTerms(parseInt(term) - 90)
     // Double-check for subjects that don't have any classes
-    scraped = scraped || await scraper.scrapeUnusedClasses(term)
+    var scraped = await scraper.scrapeUnusedClasses(term)
     if(scraped)
         dataTier.pushClassDataToSheet()
     process.exit();
