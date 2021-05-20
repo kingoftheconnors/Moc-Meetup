@@ -7,8 +7,6 @@ var logger = require('morgan');
 var sassMiddleware = require('node-sass-middleware')
 
 var indexRouter = require('./routes/index');
-var chartRouter = require('./routes/chart');
-var saveRouter = require('./routes/save');
 var scrapeRouter = require('./routes/scraper');
 var wdcRouter = require('./routes/wdc');
 
@@ -38,8 +36,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/scrape', scrapeRouter);
-app.use('/chart', chartRouter);
-app.use('/saveChart', saveRouter);
 app.use('/tableauSource', wdcRouter);
 
 // catch 404 and forward to error handler
