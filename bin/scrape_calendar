@@ -3,13 +3,10 @@ async function scrape_calendar() {
     const dataTier = require("../lib/dataTier");
     const scraper = require("../lib/scrapper");
     const utils = require("../lib/utils");
-    // Find term
-    var term = utils.getTerm()
-
     // If a subject has a term earlier than current term, scrape
-    await dataTier.deleteOldTerms(parseInt(term) - 90)
+    await dataTier.deleteOldTerms(parseInt(utils.getTerm()) - 90)
     // Double-check for subjects that don't have any classes
-    var scraped = await scraper.scrapeUnusedClasses(term)
+    var scraped = await scraper.scrapeUnusedClasses(utils.getTerm())
     if(scraped)
         dataTier.pushClassDataToSheet()
     process.exit();
