@@ -13,64 +13,76 @@
                     Moc-Meetup is the passion project of a UTC Alumni, Connor McPherson, club president
                     of CompUTC. As a programmer with a calling for tinkering and small conveniences,
                     he dreamed of creating a search engine for tracking calendar times in an accessible,
-                    visual heatmap. His first attempts into this dream site ended in pathetic failure,
-                    no matter how many methods he tried.
+                    visual heatmap. Halfway through his Junior year, he spent half a long weekend tinkering
+                    with the UTC course catalog looking for a way to extract the class data in a way he
+                    could visualize, with no success.
                 </p>
                 <p>
-                    In 2019, the Moc Meetup team grew to two people, with web programmer and visionary
-                    Kishan Patel, who proposed web-scraping the UTC schedule into a personal database
-                    to give full control of the class format. Together, Kishan and Connor crafted the
-                    prototype web scraper. In 2020, Connor invited another student, Audrey Tan, onto
-                    the team to consult on the web app's look and body. Finally, in April of 2021,
+                    In 2019, Connor meet a web programmer and visionary, Kishan Patel, who was experienced
+                    with web-scrapers. When Connor explained his vision to him, Kishan proposed a daily-run
+                    scraper that captured data from the UTC course catalog into a personal database
+                    to give full control of the class format. Connor and Kishan starting meeting at the
+                    CompUTC hack nights, and began hacking together a first draft of this project. 
+                    At the second half of his senior year, Connor invited another student, Audrey Tan, onto
+                    the team to consult on the web app's look and body. Finally, in the Summer of 2021,
                     a full year after Connor graduated, Moc Meetup was released to the UTC student body.
                 </p>
             </div>
-            <figure class="col-4">
-              <img src="/images/logo.png" alt="Magnifying glass over clock" class="w-100">
-                <figcaption>
-                  This was our first logo for Moc Meetup early in development. When we nailed
-                  down our color scheme, we realized having a logo was a crutch. Removing it made the
-                  front page easier to look at and more intuitive to users.
-                </figcaption>
-            </figure>
+            <div class="col-4">
+              <img src="/images/Connor.jpg" alt="Connor standing in front of a garden in Spring" class="w-100">
+            </div>
         </div>
         <div class="row py-3 justify-content-center">
+            <div class="col-4">
+              <img src="/images/HackNight.jpg" alt="Connor standing in front of a garden in Spring" class="w-100">
+            </div>
             <div class="col-6">
                 <p>
                     <b>Why put so much work into this?</b>
                 </p>
                 <p>
-                    The goal of Moc Meetup is to solve the problems we faced while
-                    scheduling meetings and appointments with other students. Any event organizer
-                    knows that finding a time and a room is a portion of your life wasted that could be
-                    better spent planning and leading. This web app is a gift for tutors, event organizers,
-                    club leaders, and study group planners at UTC, and I hope this gift helps you in
-                    whatever you're trying to do!
-                </p>
-                <p>
-                    And if you're feeling extra nice, pass the gift on to someone you know! Share the
-                    love!
+                    The goal of Moc Meetup is to solve help students trying to organize events,
+                    and is inspired by the many tools and workaround we used as students to
+                    reach out to as many people as possible. Any event organizer knows that
+                    finding a time and a room is vital to helping potential members come. This
+                    web app is a gift for tutors, event organizers, and leaders at UTC, and I
+                    hope this gift helps you in whatever you're trying to do!
                 </p>
             </div>
-            <div class="col-4"></div>
         </div>
         <div class="row py-3 justify-content-center">
             <div class="col-6">
                 <p>
-                    <b>Is the project continuing?</b>
+                    <b>I need more! Is the project continuing?</b>
                 </p>
                 <p>
-                    Nope! But while WE don't have any further plans, that doesn't mean you can't!
-                    You can find the source-code on
-                    <a href="https://github.com/kingoftheconnors/Class-Scheduler/tree/Product">github</a>,
-                    and the project is licensed under MIT (free to make your own however you want)!
-                    You can also contact me by leaving feedback through the Github issues page (the feedback navlink)!
+                    While this project isn't continuing, the data is actually available to
+                    anyone to make visualizations for! This site doubles as a web data connector,
+                    so you can connect to the data source we're using and sort through the UTC
+                    course data on your own! See the <a href="help#tableau">tableau tutorial</a>
+                    section to learn how!
+                </p>
+                <p>
+                    In terms of adding new features, I'm sad to say we don't have any plans
+                    on supporting this project long-term. This is a passion hobbyist project,
+                    and not something we're going to expand on.
+                    <br><br>
+                    But while WE don't have any further plans, that doesn't mean you can't!
+                    <br><br>
+                    You can find the source-code on <a href="https://github.com/kingoftheconnors/Class-Scheduler/tree/Product">github</a>,
+                    under the beautiful MIT license! MIT just means you're not allowed to sue
+                    me if you do something illegal on accident. You can also talk with others
+                    using the tool by leaving feedback through the Github issues page (the
+                    feedback navlink)!
                 </p>
             </div>
             <div class="col-4"></div>
         </div>
+        
+        <h4 class="py-2 text-center">
+            If you're feeling extra grateful to this project, please show it by passing this
+            gift on to someone you know! We worked really hard on it!
+        </h4>
     </div>
 
 <%- include('includes/footer.ejs') %>
-
-<script type="text/javascript" src="/javascripts/classSearch.js"></script>
