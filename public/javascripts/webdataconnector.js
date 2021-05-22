@@ -26,13 +26,16 @@
             id: "room",
             dataType: tableau.dataTypeEnum.string
         }, {
-            id: "title",
-            dataType: tableau.dataTypeEnum.string
-        }, {
             id: "term",
             dataType: tableau.dataTypeEnum.string
         }, {
-            id: "time", // A time represented in seconds
+            id: "startTime", // A time represented in seconds
+            dataType: tableau.dataTypeEnum.int
+        }, {
+            id: "endTime", // A time represented in seconds
+            dataType: tableau.dataTypeEnum.int
+        }, {
+            id: "hours",
             dataType: tableau.dataTypeEnum.int
         }];
 
@@ -60,9 +63,10 @@
                     "days": resp[i].days,
                     "building": resp[i].building,
                     "room": resp[i].room,
-                    "title": resp[i].title,
                     "term": resp[i].term,
-                    "time": resp[i].time
+                    "startTime": parseInt(resp[i].startTime),
+                    "endTime": parseInt(resp[i].endTime),
+                    "hours": parseInt(resp[i].hours)
                 });
             }
 
