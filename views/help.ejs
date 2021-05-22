@@ -1,0 +1,143 @@
+<%- include('includes/header.ejs') %>
+
+    <div class="jumbotron jumbotron-fluid bg-primary text-light">
+        <div class="container text-center">
+            <h1 class="display-2">Moc Meetup</h1>
+        </div>
+    </div>
+    <div class="container">
+        <!-- Opener: Types of uses -->
+        <div class="row py-3 justify-content-center">
+            <div class="col-6">
+                <p>
+                    Moc-Meetup has two major functions:
+                    <ol>
+                        <li>Finding free times for students in certain class periods</li>
+                        <li>Finding free classrooms for the time of your event</li>
+                    </ol>
+                </p>
+            </div>
+            <div class="col-4"></div>
+        </div>
+        <!-- View 1: Free times -->
+        <div class="row py-3 justify-content-center">
+            <div class="col-6">
+                <p>
+                    <b>Finding free times:</b>
+                </p>
+                <ul>
+                    <li>To find free times, click the "Find a Time" button on the Moc Meetup front page. The page will automatically scroll down to the find-a-time dashboard</li>
+                    <li>Click on a subject to select a student group. If you hold down CTRL, you can select multiple subjects</li>
+                    <li>The heatmap shows how many classes there are for each hour of the day. Deeper reds mean more classes, while lighter yellows mean fewer classes</li>
+                    <li>You can hover your mouse over boxes to see the which classes are in that time slot</li>
+                    <li>Use the filterbox on the right to select specific classes you want to see. This way, you can see the times for just freshman, senior, or graduate level classes based on your target audience!</li>
+                    <li>By holding shift and clicking on two different classes in the filterbox, you can select all classes in between them. Checking any classes in your current selection will check all of them</li>
+                </ul>
+            </div>
+            <div class="col-4">
+              <img src="/images/FindTime.gif" alt="Connor standing in front of a garden in Spring" class="w-100">
+            </div>
+        </div>
+        <!-- View 2: Free classes -->
+        <div class="row py-3 justify-content-center">
+            <div class="col-6">
+                <p>
+                    <b>Finding free classes:</b>
+                </p>
+                <ul>
+                    <li>To find free classes, click the "Find a Classroom" button on the Moc Meetup front page. The page will load the find-a-clasroom dashboard and automatically scroll down to view it</li>
+                    <li>Click on a building to select a student group. If you hold down CTRL, you can select multiple buildings. You must also select a day (you can use CTRL here too)</li>
+                    <li>The calendar shows whether the specific classroom is in use at that time. White timeslots are class-free, so the classsroom can be used at that time</li>
+                    <li>Use the filterbox on the right to remove classrooms you don't intend on using. This can help declutter the view so you can do side-by-side comparisons of the classrooms you're considering</li>
+                    <li><b>NOTE: This view is based entirely on the UTC class schedule. It does not take into account departmental meetings or other one-time events</b></li>
+                </ul>
+            </div>
+            <div class="col-4">
+                <img src="/images/FindClassroom.gif" alt="Connor standing in front of a garden in Spring" class="w-100">
+            </div>
+        </div>
+
+        <!-- Tableau webdataconnector tutorial -->
+        <div id="tableau">
+            <h3 class="text-center">But wait, there's more!</h3>
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    <p>
+                        <b>The data used in these views are compiled using tableau! Tableau allows for custom data connections called "web data connectors", which allow individual sites to service as data sources for any tableau user!</b>
+                    </p>
+                    <p>
+                        You can make your own views on tableau using the scraped UTC class data!
+                    </p>
+                </div>
+            </div>
+            <!-- Bullet point 1: Download -->
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <ul>
+                        <li>Create a free username and download the tableau public desktop from <a href="https://public.tableau.com">Tableau Public</a></li>
+                    </ul>
+                </div>
+                <div class="col-4"></div>
+            </div>
+            <!-- Bullet point 2: Open and select "Web Data Connector" -->
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <ul>
+                        <li>Open Tableau Desktop - Public Edition. When choosing a data source to connect to, click "Web Data Connector" under the "To a Server" header</li>
+                    </ul>
+                </div>
+                <div class="col-4"><img class="w-100" src="/images/WebDataConnectOption.PNG"></div>
+            </div>
+            <!-- Bullet point 3: Connect -->
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <ul>
+                        <li>In the web data connector URL section, enter <b>https://mocs-meetup.herokuapp.com/tableauSource/</b> and press enter to go to the page. Expect this part to take a while, as the Moc Meetup site will have to ramp up</li>
+                    </ul>
+                </div>
+                <div class="col-4"><img class="w-100" src="/images/WebDataConnectorLink.PNG"></div>
+            </div>
+            <!-- Bullet point 4: Get Class Data -->
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <ul>
+                        <li>Click "Get Class Data!" to download the data!</li>
+                    </ul>
+                </div>
+                <div class="col-4"><img class="w-100" src="/images/WebDataConnectorGetClassData.PNG"></div>
+            </div>
+            <!-- Bullet point 5: Get Class Data -->
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <ul>
+                        <li>Click "Update Now!" to get the data onto your tableau, and congratulations! You can now start designing your views! Go the "Sheet 1" sheet and take a look at what you can do with the data!</li>
+                    </ul>
+                </div>
+                <div class="col-4"><img class="w-100" src="/images/WebDataConnectorUpdate.PNG"></div>
+            </div>
+            <!-- Moc Meetup Data -->
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <b>The Moc Meetup Web Data Connector exposes several types of data:</b>
+                    <ul>
+                        <li>Class name</li>
+                        <li>Course Reference Number (CRN)</li>
+                        <li>Subject</li>
+                        <li>Class weekdays</li>
+                        <li>Building</li>
+                        <li>Room</li>
+                        <li>Class term (semester)</li>
+                        <li>Numerical Start time (in seconds from midnight)</li>
+                    </ul>
+                </div>
+                <div class="col-4"></div>
+            </div>
+        </div>
+        <b></b>
+        
+        <h4 class="py-5 text-center">
+            Please make whatever you want! If you're feeling extra grateful to this project, please show it by passing this gift on to someone you know! We worked really hard on it!
+        </h4>
+    </div>
+
+<%- include('includes/footer.ejs') %>
