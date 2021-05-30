@@ -37,6 +37,12 @@
         }, {
             id: "hours",
             dataType: tableau.dataTypeEnum.int
+        }, {
+            id: "instructor",
+            dataType: tableau.dataTypeEnum.string
+        }, {
+            id: "classsize",
+            dataType: tableau.dataTypeEnum.int
         }];
 
         var tableSchema = {
@@ -66,7 +72,9 @@
                     "term": resp[i].term,
                     "startTime": parseInt(resp[i].startTime),
                     "endTime": parseInt(resp[i].endTime),
-                    "hours": parseInt(resp[i].hours)
+                    "hours": parseInt(resp[i].hours),
+                    "instructor": parseInt(resp[i].instructor),
+                    "classsize": parseInt(resp[i].classsize)
                 });
             }
 
