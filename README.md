@@ -30,3 +30,7 @@ Yes, the backbone of this app, Puppeteer is a web-scraping package. We use it to
 ### Tableau!
 
 Tableau is a data visualization tool for business users. It also has a fantastic API for embedding these visualizations in websites. This is how Moc Meetup takes the data in Postgres and visualizes the UTC class data. Since this project uses [Tableau Public](https://public.tableau.com/s/), Moc Meetup first uploads the data to a google sheet. Tableau Public not only is compatible with google sheets, but updates itself daily if the sheet it reads changes. This is how Moc Meetup stays relevant even with changing semesters.
+
+### Google Sheets?
+
+Tableau public is a free verison. The paid version can interface directly with Postgres databases, but since this is a hobbyist project, we opted to using a Google API to push all relevant data to a google sheet, which the tableau would read. Tableau Public has an added feature that Google Sheets data (and only google sheets) will be refreshed every day at 11 PM. We used this to ensure that Moc Meetup would be able to scrape newer terms to show up-to-date data.
