@@ -17,6 +17,21 @@
         <% if ( message.length > 0 ) { %>
             <p class="py-3 text-center text-success"><%= message %> </p>
         <% } %>
+        
+        <div class="row justify-content-around py-3">
+            <p class="text-center">
+                <b>
+                    Moc Meetup is the event scheduling tool for UTC teams, tutors, and clubs!
+                    We can help you know when your audience isn't in class, what classrooms
+                    are free, and what the statistically best times for your events are! Select
+                    a subject and filter by class name to see a weekly calendar to help you
+                    find the most usable times for your scheduling!
+                </b>
+            </p>
+        </div>
+
+        <hr>
+
         <div id="classesTableauBox" class="row justify-content-center">
             <div class="col-12">
                 <div id="classesViz"></div>
@@ -30,16 +45,7 @@
 
         <hr>
 
-        <div class="row justify-content-around py-4 border-bottom border-primary">
-            <p class="text-center">
-                <b>
-                    Moc Meetup is the event scheduling tool for UTC teams, tutors, and clubs!
-                    We can help you know when your audience isn't in class, what classrooms
-                    are free, and what the statistically best times for your event are! Select
-                    a subject and filter by class name to see a weekly calendar to help you
-                    find the most usable times for your scheduling!
-                </b>
-            </p>
+        <div class="row justify-content-around py-4">
             <p class="text-center">
                 <b>NOTE: </b>Moc Meetup pulls data from the UTC course catalog. Any rooms, buildings,
                 or meetings that are not in the public course catalog will not appear on Moc Meetup.
@@ -60,7 +66,7 @@
 
     $('.btn-tableau-scroll').on('click', function() {
         window.scroll({
-            top: 350,
+            top: 490,
             behavior: 'smooth'
         });
     })
