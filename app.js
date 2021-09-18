@@ -12,6 +12,9 @@ var wdcRouter = require('./routes/wdc');
 
 var app = express();
 
+// Verify we have access to relic
+require ('newrelic');
+
 // view engine setup
 const flash = require('connect-flash')
 app.set('views', path.join(__dirname, 'views'));
