@@ -2,7 +2,6 @@
 function addClass() {
     var className = $("#classBrowser").val();
     if($('.classes').filter(function() { return this.value.toLowerCase() == className.toLowerCase()}).length > 0) {
-        console.log("Class already exists in schedule!")
         alert("Class already exists in schedule!")
         return false;
     }
