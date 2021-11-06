@@ -37,6 +37,12 @@ app.use(sassMiddleware({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+/* GET home page. */
+app.get('/robots.txt', function(req, res, next) {
+  res.type('text/plain')
+  res.send("User-agent: *");
+});
+
 app.use('/', indexRouter);
 app.use('/scrape', scrapeRouter);
 app.use('/tableauSource', wdcRouter);
