@@ -8,6 +8,7 @@ async function scrape_calendar() {
     await dataTier.deleteOldTerms(parseInt(utils.getTerm()) - 90)
     // Double-check for subjects that don't have any classes
     var scraped = await scraper.scrapeUnusedClasses(utils.getTerm())
+    console.log("Scraped: ", scraped)
     if(scraped)
         await dataTier.pushClassDataToSheet()
     process.exit();
